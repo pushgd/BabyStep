@@ -1,5 +1,6 @@
 package game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.libGDX.engine.Base.render.Image;
 import com.libGDX.engine.Base.gameComponents.Scene;
@@ -18,7 +19,7 @@ public class GameManager
     {
         CollisionManager.init();
         Image.Debug.init();
-        currentScene = new game.scenes.SceneMenu();
+        currentScene = new game.scenes.GameScene();
     }
 
 
@@ -57,7 +58,7 @@ public class GameManager
         {
             currentScene.paint(spriteBatch);
         }
-//        Image.Debug.drawText(spriteBatch, "FPS " + Gdx.graphics.getFramesPerSecond(), 0, 480);
+        Image.Debug.drawText(spriteBatch, "FPS " + Gdx.graphics.getFramesPerSecond(), 0, 0);
     }
 
 

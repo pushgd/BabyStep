@@ -1,0 +1,13 @@
+
+castle.png
+size: 256,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+1
+  rotate: false
+  xy: 0, 0
+  size: 200, 374
+  orig: 256, 512
+  offset: 2, 10
+  index: -1

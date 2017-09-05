@@ -13,7 +13,7 @@ public abstract class Animation
     public int currentState;
     AnimationEventListener listener;
     int cyclesToComplete;
-
+    public SpriteAnimation spriteAnimation;
 
     public Animation(int animationID, AnimationEventListener listener)
     {

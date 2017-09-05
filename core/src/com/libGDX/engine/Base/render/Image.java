@@ -24,6 +24,7 @@ public class Image
     {
         texture = new Texture(path);
         sprite = new Sprite(texture);
+        sprite.flip(false, true);
     }
 
     public static void draw(SpriteBatch spriteBatch, Image r, float x, float y)
@@ -57,7 +58,7 @@ public class Image
 
     public static class Debug
     {
-        public static Texture pixel = new Texture("pixel.png");
+        public static Texture pixel = new Texture("debugs/pixel.png");
         public static Sprite pixelSprite = new Sprite(pixel);
         public static BitmapFont bf = new BitmapFont(true);
         public static GlyphLayout gl = new GlyphLayout();

@@ -52,8 +52,8 @@ public class TestObject extends GameObject
     {
         animation.paint(spriteBatch, position.x, position.y);
         Image.Debug.drawText(spriteBatch,position+"  "+animation.getHeight(),position.x,position.y);
-        collision.paint(spriteBatch);
-        collision2.paint(spriteBatch, Color.PINK);
+//        collision.paint(spriteBatch);
+//        collision2.paint(spriteBatch, Color.PINK);
     }
 
     @Override

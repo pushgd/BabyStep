@@ -17,7 +17,7 @@ public abstract class Entity implements com.libGDX.engine.Base.aniamtion.Animati
     public final int UID;
     public com.libGDX.engine.Utility.Vector2D position;
     public com.libGDX.engine.Utility.Vector2D velocity;
-
+    public Collision collision;
     public boolean remove;
 
 

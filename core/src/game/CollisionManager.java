@@ -1,6 +1,8 @@
 package game;
 
 import com.libGDX.engine.Base.collision.Collision;
+import com.libGDX.engine.Base.render.Image;
+import com.libGDX.engine.Debug.Debug;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ public class CollisionManager
     }
 
 
-    private static ArrayList<Collision> collisionList;
+    public static ArrayList<Collision> collisionList;
 
     public static void init()
     {
@@ -31,19 +33,31 @@ public class CollisionManager
         for (int i = 0; i < collisionList.size(); i++)
         {
             Collision c1 = collisionList.get(i);
+            if (c1.remove)
+            {
+                collisionList.remove(i);
+                continue;
+            }
             for (int j = i; j < collisionList.size(); j++)
             {
                 Collision c2 = collisionList.get(j);
 
+                if (c2.remove)
+                {
+                    collisionList.remove(j);
+                    continue;
+                }
                 if (c2.owner.UID == c1.owner.UID)
                 {
                     continue;
                 }
-                if (c1.isColliding(c2))
                 {
-                    c1.owner.onCollision(c1,c2);
-                    c2.owner.onCollision(c2,c1);
+                    if (c1.isColliding(c2))
+                    {
+                        c1.owner.onCollision(c1, c2);
+                        c2.owner.onCollision(c2, c1);
 
+                    }
                 }
 
             }

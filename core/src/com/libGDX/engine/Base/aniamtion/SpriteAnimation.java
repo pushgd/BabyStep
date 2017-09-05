@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.libGDX.engine.Base.render.Image;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class SpriteAnimation extends Animation
     ArrayList<Sprite[]> sprites;
     int currentFrame;
     long previousTime;
+    public float rotation;
 
     public SpriteAnimation(com.libGDX.engine.Base.aniamtion.AnimationEventListener listener)
     {
@@ -28,6 +30,7 @@ public class SpriteAnimation extends Animation
         super(animationID, listener);
         time = new ArrayList<int[]>();
         sprites = new ArrayList<Sprite[]>();
+        spriteAnimation = this;
     }
 
 
@@ -102,11 +105,27 @@ public class SpriteAnimation extends Animation
     public void paint(SpriteBatch spriteBatch, float x, float y)
     {
         Sprite temp = sprites.get(currentState)[currentFrame];
-        temp.setOrigin(0, 0);
+        temp.setOriginCenter();
         temp.setPosition(x, y);
+        temp.setRotation(rotation);
 
         temp.draw(spriteBatch);
+        Image.Debug.drawText(spriteBatch,""+currentFrame,x,y);
     }
+
+
+    public void paint(SpriteBatch spriteBatch, float x, float y,float rotation,float scaleX,float scaleY,boolean flipX,boolean flipY)
+    {
+        Sprite temp = sprites.get(currentState)[currentFrame];
+        temp.setOriginCenter();
+        temp.setPosition(x, y);
+        temp.setRotation(rotation);
+        temp.setFlip(flipX,flipY);
+        temp.setScale(scaleX,-scaleY);
+        temp.draw(spriteBatch);
+//        Image.Debug.drawText(spriteBatch,""+currentFrame,x,y);
+    }
+
 
     @Override
     public float getWidth()
@@ -131,4 +150,5 @@ public class SpriteAnimation extends Animation
             }
         }
     }
+
 }
